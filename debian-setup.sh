@@ -1,6 +1,5 @@
 #!/bin/bash
-set -x
-cd /tmp/
+cd $(mktemp -d)
 export DEBIAN_FRONTEND=noninteractive
 apt-get update && \
     apt-get install net-tools \
