@@ -9,7 +9,7 @@ export DEBIAN_FRONTEND=noninteractive
 cd /tmp/
 apt-get update && \
 apt-get install curl -y && \
-curl -s https://raw.githubusercontent.com/gricardo87/bash/main/upgrade.sh | bash -
+curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/upgrade.sh | bash -
 ```
 ##### Script para instalar principais ferramentas cli para servers (ou não):
 
@@ -18,5 +18,5 @@ export DEBIAN_FRONTEND=noninteractive
 cd /tmp/
 apt-get update && \
 apt-get install curl -y && \
-curl -s https://raw.githubusercontent.com/gricardo87/bash/main/debian-setup.sh | bash -
+curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/debian-setup.sh | bash -
 ```
