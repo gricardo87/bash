@@ -5,7 +5,7 @@ export DEBIAN_FRONTEND=noninteractive
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmour > /etc/apt/trusted.gpg.d/docker.gpg
 echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" > /etc/apt/sources.list.d/docker.list
 apt-get update && apt-get install -y containerd.io
-mkdir -p /etc/containerd
+mkdir -p /etc/containerd 
 containerd config default > /etc/containerd/config.toml
 cp /etc/containerd/config.toml /etc/containerd/config.toml.orig
 sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
@@ -13,6 +13,8 @@ systemctl enable containerd && systemctl restart containerd
 
 # Change some configurations files and change to a temporary directory & Download and install kubelet kubeadm kubectl
 cd $(mktemp -d)
+mkdir -p /etc/modules-load.d/ /etc/sysctl.d/ 2>&-
+
 cat /etc/modules-load.d/k8s.conf <<EOF
 br_netfilter
 ip_vs
