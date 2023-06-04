@@ -4,6 +4,7 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get update && \
     apt-get install net-tools \
     libxt6 \
+    git \
     apt-file \
     libxmu6 \
     nmap \
