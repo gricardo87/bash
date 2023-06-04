@@ -7,6 +7,7 @@ apt-get update && \
     git \
     apt-file \
     libxmu6 \
+    cdisk \
     nmap \
     bash-completion \
     htop \
