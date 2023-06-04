@@ -13,7 +13,7 @@ systemctl enable containerd && systemctl restart containerd
 
 # Change some configurations files and change to a temporary directory & Download and install kubelet kubeadm kubectl
 cd $(mktemp -d)
-mkdir -p /etc/modules-load.d/ /etc/sysctl.d/ 2>&-
+mkdir -vp /etc/modules-load.d/ /etc/sysctl.d/ 2>&-
 
 cat /etc/modules-load.d/k8s.conf <<EOF
 br_netfilter
