@@ -4,7 +4,7 @@ export DEBIAN_FRONTEND=noninteractive
 # Change to a temporary directory & Download and install containerd
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmour > /etc/apt/trusted.gpg.d/docker.gpg
 echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" > /etc/apt/sources.list.d/docker.list
-apt-get update && apt-get install -y containerd
+apt-get update && apt-get install -y containerd.io
 mkdir -p /etc/containerd 
 containerd config default > /etc/containerd/config.toml
 cp /etc/containerd/config.toml /etc/containerd/config.toml.orig
@@ -38,7 +38,7 @@ sysctl -p
 
 sysctl -a | grep ipv4
 
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmour -o /etc/apt/trusted.gpg.d/kubernetes-xenial.gpg
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmour > /etc/apt/trusted.gpg.d/kubernetes-xenial.gpg
 echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
 
 apt-get update && apt-get install -y apt-transport-https ca-certificates curl
