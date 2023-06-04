@@ -9,13 +9,14 @@ mkdir -p /etc/containerd
 containerd config default > /etc/containerd/config.toml
 cp /etc/containerd/config.toml /etc/containerd/config.toml.orig
 sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
-systemctl enable containerd && systemctl restart containerd
+systemctl enable containerd 
+systemctl restart containerd
 
 # Change some configurations files and change to a temporary directory & Download and install kubelet kubeadm kubectl
 cd $(mktemp -d)
 mkdir -p /etc/modules-load.d/ /etc/sysctl.d/ 2>&-
 
-cat <<EOF > /etc/modules-load.d/k8s.conf
+cat <<EOF > /etc/modprobe.d/k8s.conf
 br_netfilter
 ip_vs
 ip_vs_rr
