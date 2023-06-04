@@ -28,8 +28,9 @@ apt-get update && \
     ntpdate \
     bind9-dnsutils \
     aptitude \
-    --no-install-recommends -y
+    zip \
+    uznip \
+    --no-install-recommends -y;
 
 apt-file update;
-
 echo "[*] Script executado com sucesso!";
