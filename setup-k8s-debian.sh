@@ -13,7 +13,7 @@ rm -vf /etc/apt/trusted.gpg.d/kubernetes-xenial.gpg
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmour > /etc/apt/trusted.gpg.d/docker.gpg
 echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable"
-apt-get update && apt-get install -y containerd.io
+apt-get update && apt-get install -y containerd
 
 # Change some configurations files and change to a temporary directory & Download and install kubelet kubeadm kubectl
 cd $(mktemp -d)
