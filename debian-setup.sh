@@ -5,6 +5,7 @@ apt-get update && \
     apt-get install net-tools \
     libxt6 \
     libxmu6 \
+    nmap \
     bash-completion \
     htop \
     rsync \
