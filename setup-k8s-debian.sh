@@ -13,7 +13,7 @@ systemctl enable containerd && systemctl restart containerd
 
 # Change some configurations files and change to a temporary directory & Download and install kubelet kubeadm kubectl
 cd $(mktemp -d)
-cat /etc/modules-load.d/k8s.conf <EOF
+cat /etc/modules-load.d/k8s.conf <<EOF
 br_netfilter
 ip_vs
 ip_vs_rr
@@ -23,7 +23,7 @@ nf_conntrack_ipv4
 overlay
 EOF
 
-cat /etc/sysctl.d/kubernetes.conf <EOF
+cat /etc/sysctl.d/kubernetes.conf <<EOF
 net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
 net.ipv4.ip_forward = 1
