@@ -17,6 +17,8 @@ apt-get update && \
     linux-headers-amd64 \
     vim \
     sudo \
+    linux-headers-amd64 \
+    build-essential \
     ca-certificates \
     curl \
     apt-transport-https \
