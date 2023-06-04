@@ -1,6 +1,5 @@
 #!/bin/bash -exu
 export DEBIAN_FRONTEND=noninteractive
-rm -vf /etc/apt/trusted.gpg.d/kubernetes-xenial.gpg
 
 # Change to a temporary directory & Download and install containerd
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmour > /etc/apt/trusted.gpg.d/docker.gpg
