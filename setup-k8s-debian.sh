@@ -1,6 +1,6 @@
 #!/bin/bash -exu
 export DEBIAN_FRONTEND=noninteractive
-rm -f /etc/apt/trusted.gpg.d/kubernetes-xenial.gpg
+rm -vf /etc/apt/trusted.gpg.d/kubernetes-xenial.gpg
 
 # Change to a temporary directory & Download and install Docker
 #cd $(mktemp -d)
