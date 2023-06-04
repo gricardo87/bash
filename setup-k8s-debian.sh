@@ -24,10 +24,9 @@ EOF
 sysctl --system
 
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/kubernetes-xenial.gpg
-apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
+echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
 
-apt-get update
-apt-get install -y apt-transport-https ca-certificates curl
+apt-get update && apt-get install -y apt-transport-https ca-certificates curl
 curl -sSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor > /etc/apt/trusted.gpg.d/kubernetes.gpg
 apt-get update
 apt-get install -y kubelet kubeadm kubectl
