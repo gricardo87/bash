@@ -70,7 +70,7 @@ apt-get install curl -y && \
 curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/minikube-clean.sh | bash -
 ```
 
-##### Comando para instalar o docker + kubeadmin + kubectl + helm + k8s em uma paulada só:
+##### Comando para instalar o containerd + kubeadmin + kubectl + helm + k8s em uma paulada só:
 
 ```bash
 export DEBIAN_FRONTEND=noninteractive
