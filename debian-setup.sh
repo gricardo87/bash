@@ -1,4 +1,5 @@
-#!/bin/bash -exu
+#!/bin/bash
+set -x
 cd /tmp/
 export DEBIAN_FRONTEND=noninteractive
 apt-get update && \
