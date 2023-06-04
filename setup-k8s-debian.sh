@@ -1,5 +1,6 @@
 #!/bin/bash -exu
 export DEBIAN_FRONTEND=noninteractive
+rm -f /etc/apt/trusted.gpg.d/kubernetes-xenial.gpg
 
 # Change to a temporary directory & Download and install Docker
 cd $(mktemp -d)
@@ -23,7 +24,7 @@ EOF
 
 sysctl --system
 
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmour -o /etc/apt/trusted.gpg.d/kubernetes-xenial.gpg
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmour -o /etc/apt/trusted.gpg.d/kubernetes-xenial.gpg
 echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
 
 apt-get update && apt-get install -y apt-transport-https ca-certificates curl
