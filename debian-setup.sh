@@ -31,7 +31,7 @@ apt-get update && \
     bind9-dnsutils \
     aptitude \
     zip \
-    uznip \
+    unzip \
     --no-install-recommends -y;
 
 apt-file update;
