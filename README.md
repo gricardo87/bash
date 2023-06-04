@@ -37,5 +37,33 @@ export DEBIAN_FRONTEND=noninteractive
 cd /tmp/
 apt-get update && \
 apt-get install curl -y && \
+curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/##### Comando para instalar o docker + kubeadmin + kubectl + helm + minikube em uma paulada só:
+
+```bash
+export DEBIAN_FRONTEND=noninteractive
+cd /tmp/
+apt-get update && \
+apt-get install curl -y && \
 curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/setup-k8s-debian.sh | bash -
+```
+
+##### Comando limpar ambiente docker:
+
+```bash
+export DEBIAN_FRONTEND=noninteractive
+cd /tmp/
+apt-get update && \
+apt-get install curl -y && \
+curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/docker-clean.sh | bash -
+```
+
+
+##### Comando limpar ambiente minikube:
+
+```bash
+export DEBIAN_FRONTEND=noninteractive
+cd /tmp/
+apt-get update && \
+apt-get install curl -y && \
+curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/minikube-clean.sh | bash -
 ```
