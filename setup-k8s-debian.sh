@@ -3,9 +3,13 @@ export DEBIAN_FRONTEND=noninteractive
 rm -f /etc/apt/trusted.gpg.d/kubernetes-xenial.gpg
 
 # Change to a temporary directory & Download and install Docker
-cd $(mktemp -d)
-curl -fsSL https://get.docker.com -o get-docker.sh
-sh get-docker.sh
+#cd $(mktemp -d)
+#curl -fsSL https://get.docker.com -o get-docker.sh
+#sh get-docker.sh
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor > /etc/apt/trusted.gpg.d/containerd.gpg
+echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" >  /etc/apt/sources.list.d/containerd.list
+apt-get update && apt-get install -y containerd.io
 
 # Change some configurations files and change to a temporary directory & Download and install kubelet kubeadm kubectl
 cd $(mktemp -d)
