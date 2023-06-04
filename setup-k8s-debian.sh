@@ -2,22 +2,15 @@
 export DEBIAN_FRONTEND=noninteractive
 rm -vf /etc/apt/trusted.gpg.d/kubernetes-xenial.gpg
 
-# Change to a temporary directory & Download and install Docker
-#cd $(mktemp -d)
-#curl -fsSL https://get.docker.com -o get-docker.sh
-#sh get-docker.sh
-
-#curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor > /etc/apt/trusted.gpg.d/containerd.gpg
-#echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu kubernetes-xenial stable" >  /etc/apt/sources.list.d/kubernetes.list
-#apt-get update && apt-get install -y containerd.io
-
+# Change to a temporary directory & Download and install containerd
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmour > /etc/apt/trusted.gpg.d/docker.gpg
-echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable"
+echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" > /etc/apt/sources.list.d/docker.list
 apt-get update && apt-get install -y containerd.io
 mkdir -p /etc/containerd
 containerd config default > /etc/containerd/config.toml
 cp /etc/containerd/config.toml /etc/containerd/config.toml.orig
 sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
+systemctl enable containerd && systemctl restart containerd
 
 # Change some configurations files and change to a temporary directory & Download and install kubelet kubeadm kubectl
 cd $(mktemp -d)
