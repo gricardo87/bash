@@ -5,7 +5,9 @@
 ##### Script para atualizar sistema e instalar principais ferramentas cli para servers (ou não).
 
 ```bash
-apt update && \
-apt install curl -y && \
+export DEBIAN_FRONTEND=noninteractive
+cd /tmp/
+apt-get update && \
+apt-get install curl -y && \
 curl -s https://raw.githubusercontent.com/gricardo87/bash/main/debian-setup.sh | bash -
 ```
