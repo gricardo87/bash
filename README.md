@@ -30,16 +30,6 @@ apt-get update && \
 apt-get install curl -y && \
 curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/install-docker.sh | bash -
 ```
-##### Comando para instalar o docker + kubectl + helm + minikube em uma paulada só:
-
-```bash
-export DEBIAN_FRONTEND=noninteractive
-cd /tmp/
-apt-get update && \
-apt-get install curl -y && \
-curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/
-```
-
 ##### Comando para instalar o docker + kubeadmin + kubectl + helm + minikube em uma paulada só:
 
 ```bash
