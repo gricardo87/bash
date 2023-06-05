@@ -19,13 +19,13 @@ cd $(mktemp -d)
 mkdir -p /etc/modules-load.d/ /etc/sysctl.d/ 2>&-
 
 cat << EOF > /etc/modules-load.d/kubernetes.conf
-br_netfilter
+"br_netfilter
 ip_vs
 ip_vs_rr
 ip_vs_sh
 ip_vs_wrr
 nf_conntrack_ipv4
-overlay
+overlay"
 EOF
 
 cat << EOF > /etc/sysctl.d/kubernetes.conf
@@ -42,7 +42,7 @@ cd $(mktemp -d)
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmour > /etc/apt/trusted.gpg.d/kubernetes-xenial.gpg
 echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
 apt-get update && apt-get install -y apt-transport-https ca-certificates curl
-apt-get install -y kubelet kubeadm kubectl
+apt-get install -y kubelet kubeadm kubectl etcd-client
 apt-mark hold kubelet kubeadm kubectl
 kubeadm config images pull
 
