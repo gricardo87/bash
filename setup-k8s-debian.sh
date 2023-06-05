@@ -2,9 +2,13 @@
 export DEBIAN_FRONTEND=noninteractive
 
 # Change to a temporary directory & Download and install containerd
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmour > /etc/apt/trusted.gpg.d/docker.gpg
-echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" > /etc/apt/sources.list.d/docker.list
-apt-get update && apt-get install -y containerd
+#curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmour > /etc/apt/trusted.gpg.d/docker.gpg
+#echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" > /etc/apt/sources.list.d/docker.list
+#apt-get update && apt-get install -y containerd
+cd $(mktemp -d)
+curl -fsSL https://get.docker.com -o install-docker.sh
+chmod +x install-docker.sh
+sh install-docker.sh
 mkdir -p /etc/containerd 
 containerd config default > /etc/containerd/config.toml
 cp /etc/containerd/config.toml /etc/containerd/config.toml.orig
