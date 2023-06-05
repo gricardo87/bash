@@ -42,7 +42,7 @@ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmour >
 echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
 apt-get update && apt-get install -y apt-transport-https ca-certificates curl
 apt-get install -y kubelet kubeadm kubectl etcd-client
-apt-mark hold kubelet kubeadm kubectl
+apt-mark hold kubelet kubeadm kubectl etcd-client
 kubeadm config images pull
 
 # Change to a temporary directory & Download and install Helm
