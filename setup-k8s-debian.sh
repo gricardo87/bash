@@ -1,6 +1,7 @@
 #!/bin/bash -exu
 export DEBIAN_FRONTEND=noninteractive
-
+rm -fv /etc/modprobe.d/kubernetes.conf
+rmdir /etc/modprobe.d/
 # Change to a temporary directory & Download and install docker/containerd
 cd $(mktemp -d)
 curl -fsSL https://get.docker.com -o install-docker.sh
