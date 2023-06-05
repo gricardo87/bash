@@ -1,10 +1,7 @@
 #!/bin/bash -exu
 export DEBIAN_FRONTEND=noninteractive
 
-# Change to a temporary directory & Download and install containerd
-#curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmour > /etc/apt/trusted.gpg.d/docker.gpg
-#echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable" > /etc/apt/sources.list.d/docker.list
-#apt-get update && apt-get install -y containerd
+# Change to a temporary directory & Download and install docker/containerd
 cd $(mktemp -d)
 curl -fsSL https://get.docker.com -o install-docker.sh
 chmod +x install-docker.sh
@@ -20,7 +17,7 @@ systemctl restart containerd
 cd $(mktemp -d)
 mkdir -p /etc/modules-load.d/ /etc/sysctl.d/ 2>&-
 
-cat <<EOF > /etc/modprobe.d/k8s.conf
+cat <<EOF > /etc/modprobe.d/kubernetes.conf
 br_netfilter
 ip_vs
 ip_vs_rr
@@ -37,25 +34,24 @@ net.ipv4.ip_forward = 1
 EOF
 
 modprobe br_netfilter ip_vs ip_vs_rr ip_vs_sh ip_vs_wrr nf_conntrack_ipv4 overlay
-
 sysctl -p
 
-sysctl -a | grep ipv4
-
+# Change to a temporary directory & Download and install k8s (kubelet kubeadm kubectl)
+cd $(mktemp -d)
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmour > /etc/apt/trusted.gpg.d/kubernetes-xenial.gpg
 echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
-
 apt-get update && apt-get install -y apt-transport-https ca-certificates curl
 apt-get install -y kubelet kubeadm kubectl
 apt-mark hold kubelet kubeadm kubectl
-
-# Autocomplete an shortkey 'k'.
-echo "source <(kubectl completion bash)" >> /etc/bash.bashrc
-echo 'alias k=kubectl' >> /etc/bash.bashrc
-echo 'complete -o default -F __start_kubectl k' >> /etc/bash.bashrc
+kubeadm config images pull
 
 # Change to a temporary directory & Download and install Helm
 cd $(mktemp -d)
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 chmod 700 get_helm.sh
 ./get_helm.sh
+
+# Autocomplete an shortcut 'k'.
+echo "source <(kubectl completion bash)" >> /etc/bash.bashrc
+echo 'alias k=kubectl' >> /etc/bash.bashrc
+echo 'complete -o default -F __start_kubectl k' >> /etc/bash.bashrc
