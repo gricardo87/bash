@@ -38,6 +38,7 @@ cd /tmp/
 apt-get update && \
 apt-get install curl -y && \
 curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/
+```
 
 ##### Comando para instalar o docker + kubeadmin + kubectl + helm + minikube em uma paulada só:
 
