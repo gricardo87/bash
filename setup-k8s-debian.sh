@@ -17,14 +17,14 @@ systemctl restart containerd
 cd $(mktemp -d)
 mkdir -p /etc/modules-load.d/ /etc/sysctl.d/ 2>&-
 
-cat << EOF > /etc/modprobe.d/kubernetes.conf
-"br_netfilter
+cat << EOF > /etc/modules-load.d/kubernetes.conf
+br_netfilter
 ip_vs
 ip_vs_rr
 ip_vs_sh
 ip_vs_wrr
 nf_conntrack_ipv4
-overlay"
+overlay
 EOF
 
 cat << EOF > /etc/sysctl.d/kubernetes.conf
