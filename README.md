@@ -77,7 +77,7 @@ curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/setup-k8s-debi
 export DEBIAN_FRONTEND=noninteractive
 cd $(mktemp -d)
 apt-get update && \
-apt-get install curl -y && \
+apt-get install unzip curl -y && \
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 ./aws/install
