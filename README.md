@@ -25,7 +25,7 @@ curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/debian-setup.s
 
 ```bash
 export DEBIAN_FRONTEND=noninteractive
-cd /tmp/
+cd $(mktemp -d)
 apt-get update && \
 apt-get install curl -y && \
 curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/install-docker.sh | bash -
@@ -34,7 +34,7 @@ curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/install-docker
 
 ```bash
 export DEBIAN_FRONTEND=noninteractive
-cd /tmp/
+cd $(mktemp -d)
 apt-get update && \
 apt-get install curl -y && \
 curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/setup-minikube-debian.sh | bash -
@@ -44,7 +44,7 @@ curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/setup-minikube
 
 ```bash
 export DEBIAN_FRONTEND=noninteractive
-cd /tmp/
+cd $(mktemp -d)
 apt-get update && \
 apt-get install curl -y && \
 curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/docker-clean.sh | bash -
@@ -55,7 +55,7 @@ curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/docker-clean.s
 
 ```bash
 export DEBIAN_FRONTEND=noninteractive
-cd /tmp/
+cd $(mktemp -d)
 apt-get update && \
 apt-get install curl -y && \
 curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/minikube-clean.sh | bash -
@@ -65,7 +65,7 @@ curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/minikube-clean
 
 ```bash
 export DEBIAN_FRONTEND=noninteractive
-cd /tmp/
+cd $(mktemp -d)
 apt-get update && \
 apt-get install curl -y && \
 curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/setup-k8s-debian.sh | bash -
@@ -74,7 +74,10 @@ curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/setup-k8s-debi
 ##### Comando instalar o awscli oficial direto do binário:
 
 ```bash
+export DEBIAN_FRONTEND=noninteractive
 cd $(mktemp -d)
+apt-get update && \
+apt-get install curl -y && \
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 ./aws/install
