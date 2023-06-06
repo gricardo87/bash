@@ -82,3 +82,13 @@ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip
 unzip awscliv2.zip
 ./aws/install
 ```
+
+##### Comando instalar o agent AWS Systems Manager (amd64):
+
+```bash
+export DEBIAN_FRONTEND=noninteractive
+cd $(mktemp -d)
+apt-get update && \
+apt-get install curl -y && \
+curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/install-ssm-debian-amd64.sh | bash -
+```
