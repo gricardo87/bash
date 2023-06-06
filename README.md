@@ -69,7 +69,7 @@ cd /tmp/
 apt-get update && \
 apt-get install curl -y && \
 curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/setup-k8s-debian.sh | bash -
-
+```
 
 ##### Comando instalar o awscli oficial direto do binário:
 
