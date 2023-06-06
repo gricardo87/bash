@@ -69,3 +69,13 @@ cd /tmp/
 apt-get update && \
 apt-get install curl -y && \
 curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/setup-k8s-debian.sh | bash -
+
+
+##### Comando instalar o awscli oficial direto do binário:
+
+```bash
+cd $(mktemp -d)
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+./aws/install
+```
