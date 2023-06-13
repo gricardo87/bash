@@ -5,7 +5,6 @@
 ##### Script para atualizar sistema Debian 11 para o Debian 12:
 
 ```bash
-export DEBIAN_FRONTEND=noninteractive
 cd /tmp/
 apt-get update && \
 apt-get install curl -y && \
