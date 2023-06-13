@@ -1,7 +1,5 @@
 #!/bin/bash -exu
 # This script updates APT sources list to use Bookworm release and performs system upgrades
-# Sets the DEBIAN_FRONTEND environment variable to "noninteractive" to prevent interactive prompts during package installations
-export DEBIAN_FRONTEND=noninteractive
 
 # Changes the current directory to /etc/apt/ where the APT configuration files are located
 cd /etc/apt/
