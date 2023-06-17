@@ -1,6 +1,6 @@
-#### Script para facilitar configurações no Debian 11.
+#### Script para facilitar configurações no Debian 11/12.
 #### Criado por Gabriel Ricardo
-#### Update: 04/06/2023
+#### Update: 17/06/2023
 
 ##### Script para realizar upgrade no  sistema operacional Debian 11 para o Debian 12:
 
