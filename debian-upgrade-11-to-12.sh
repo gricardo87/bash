@@ -1,5 +1,9 @@
 #!/bin/bash -exu
 # This script updates APT sources list to use Bookworm release and performs system upgrades
+# Set the restart mode for needrestart, set the debconf frontend to noninteractive, suspend needrestart execution after package installation or update.
+export NEEDRESTART_MODE="a"
+export DEBIAN_FRONTEND="noninteractive"
+export NEEDRESTART_SUSPEND="1"
 
 # Changes the current directory to /etc/apt/ where the APT configuration files are located
 cd /etc/apt/
@@ -22,7 +26,6 @@ sed -i s/"non-free"/"non-free-firmware"/g /etc/apt/sources.list
 # - apt-get autoclean -y: Removes old versions of installed package files
 # - sync: Flushes file system buffers
 # - echo "OK - Done!": Prints a success message indicating the completion of the script
-
 apt-get update && \
 	apt install zstd -y && \
 	apt-get upgrade -y && \
