@@ -19,7 +19,7 @@ sed -i s/"bullseye"/"bookworm"/g /etc/apt/sources.list
 if ! grep -q "non-free-firmware" /etc/apt/sources.list; then
     sed -i 's/non-free/non-free-firmware/g' /etc/apt/sources.list
 fi
-echo chegou 1
+
 # Hold grub-pc to don't upgrade in firt upgrade.
 
 VERIFICAGRUB=$(dpkg --list | egrep '^[a-z]' | awk '{print $2}' | grep -c grub-pc);
@@ -29,7 +29,6 @@ then
     apt-mark hold grub-pc
 fi
 
-echo cheogu 2
 # Executes a series of APT commands:
 # - apt-get update: Updates the package lists
 # - apt-get upgrade -y: Upgrades installed packages (without asking for confirmation)
@@ -54,4 +53,4 @@ if dpkg -s grub-pc >/dev/null 2>&1; then
 apt-mark unhold grub-pc && \
 	apt-get install --reinstall grub-pc -y && \
  	echo "OK GRUB - Done!";
-else
+fi
