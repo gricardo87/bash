@@ -1,4 +1,7 @@
-#### Script para facilitar configurações no Debian 11/12.
+#### Script para facilitar configurações no Debian 12.
+
+<img src="![image](https://github.com/gricardo87/bash/assets/4189536/af1ba9f1-cdd4-4e50-8992-64fda281c11a)
+
 #### Criado por Gabriel Ricardo
 #### Update: 17/06/2023
 
