@@ -1,4 +1,5 @@
 #!/bin/bash -exu
+set -x
 # This script updates APT sources list to use Bookworm release and performs system upgrades
 # Set the restart mode for needrestart, set the debconf frontend to noninteractive, suspend needrestart execution after package installation or update.
 export NEEDRESTART_MODE="a"
