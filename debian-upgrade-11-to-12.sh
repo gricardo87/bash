@@ -21,9 +21,7 @@ if ! grep -q "non-free-firmware" /etc/apt/sources.list; then
 fi
 
 # Hold grub-pc to don't upgrade in firt upgrade.
-
 VERIFICAGRUB=$(dpkg --list | egrep '^[a-z]' | awk '{print $2}' | grep -c grub-pc);
-
 if [[ "${VERIFICAGRUB}" -ne "0" ]];
 then
     apt-mark hold grub-pc
@@ -49,8 +47,10 @@ apt-get update && \
 	echo "OK - Done!";
 
 # Unhold grub-pc to upgrade
-if dpkg -s grub-pc >/dev/null 2>&1; then
-apt-mark unhold grub-pc && \
-	apt-get install --reinstall grub-pc -y && \
- 	echo "OK GRUB - Done!";
+VERIFICAGRUB=$(dpkg --list | egrep '^[a-z]' | awk '{print $2}' | grep -c grub-pc);
+if [[ "${VERIFICAGRUB}" -ne "0" ]];
+then
+	apt-mark unhold grub-pc && \
+		apt-get install --reinstall grub-pc -y && \
+ 		echo "OK GRUB - Done!";
 fi
