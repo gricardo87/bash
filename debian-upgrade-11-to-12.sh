@@ -24,10 +24,10 @@ echo chegou 1
 
 VERIFICAGRUB=$(dpkg --list | egrep '^[a-z]' | awk '{print $2}' | grep -c grub-pc);
 
-if [[ ${VERIFICAGRUB} -ne "0" ]];
+if [[ "${VERIFICAGRUB}" -ne "0" ]];
 then
     apt-mark hold grub-pc
-else
+fi
 
 echo cheogu 2
 # Executes a series of APT commands:
