@@ -5,7 +5,8 @@
 ##### Script para realizar upgrade no  sistema operacional Debian 11 para o Debian 12:
 
 ```bash
-cd /tmp/
+export DEBIAN_FRONTEND=noninteractive
+cd $(mktemp -d)
 apt-get update && \
 apt-get install curl -y && \
 curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/debian-upgrade-11-to-12.sh | bash -
@@ -13,7 +14,7 @@ curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/debian-upgrade
 ##### Script para atualizar sistema (pacotes) Debian 11/12:
 ```bash
 export DEBIAN_FRONTEND=noninteractive
-cd /tmp/
+cd $(mktemp -d)
 apt-get update && \
 apt-get install curl -y && \
 curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/upgrade.sh | bash -
@@ -22,7 +23,7 @@ curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/upgrade.sh | b
 ##### Script para instalar principais ferramentas cli para servers (ou não):
 ```bash
 export DEBIAN_FRONTEND=noninteractive
-cd /tmp/
+cd $(mktemp -d)
 apt-get update && \
 apt-get install curl -y && \
 curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/debian-setup.sh | bash -
