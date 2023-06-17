@@ -1,4 +1,4 @@
-#!/bin/bash -exu
+ #!/bin/bash -exu
 set -x
 # This script updates APT sources list to use Bookworm release and performs system upgrades
 # Set the restart mode for needrestart, set the debconf frontend to noninteractive, suspend needrestart execution after package installation or update.
@@ -19,12 +19,12 @@ sed -i s/"bullseye"/"bookworm"/g /etc/apt/sources.list
 if ! grep -q "non-free-firmware" /etc/apt/sources.list; then
     sed -i 's/non-free/non-free-firmware/g' /etc/apt/sources.list
 fi
-
+echo chegou 1
 # Hold grub-pc to don't upgrade in firt upgrade.
 if dpkg -s grub-pc >/dev/null 2>&1; then
     apt-mark hold grub-pc
 else
-
+echo cheogu 2
 # Executes a series of APT commands:
 # - apt-get update: Updates the package lists
 # - apt-get upgrade -y: Upgrades installed packages (without asking for confirmation)
