@@ -15,7 +15,12 @@ cp -v /etc/apt/sources.list /etc/apt/sources.list-$(date +%m%d%Y%M%S)-bkp
 sed -i s/"bullseye"/"bookworm"/g /etc/apt/sources.list
 
 # Replaces all occurrences of "non-free" with "non-free-firmware" in the sources.list file
-sed -i s/"non-free"/"non-free-firmware"/g /etc/apt/sources.list
+#sed -i s/"non-free"/"non-free-firmware"/g /etc/apt/sources.list
+if ! grep -q "non-free-firmware" /etc/apt/sources.list; then
+    sed -i 's/non-free/non-free-firmware/g' /etc/apt/sources.list
+fi
+
+apt-mark hold grub-pc
 
 # Executes a series of APT commands:
 # - apt-get update: Updates the package lists
@@ -26,6 +31,9 @@ sed -i s/"non-free"/"non-free-firmware"/g /etc/apt/sources.list
 # - apt-get autoclean -y: Removes old versions of installed package files
 # - sync: Flushes file system buffers
 # - echo "OK - Done!": Prints a success message indicating the completion of the script
+#travando gru para teste
+apt-mark hold grub-pc
+
 apt-get update && \
 	apt install zstd -y && \
 	apt-get upgrade -y && \
