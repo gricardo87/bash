@@ -2,7 +2,7 @@
 #### Criado por Gabriel Ricardo
 #### Update: 04/06/2023
 
-##### Script para atualizar sistema Debian 11 para o Debian 12:
+##### Script para realizar upgrade no  sistema operacional Debian 11 para o Debian 12:
 
 ```bash
 cd /tmp/
@@ -10,7 +10,7 @@ apt-get update && \
 apt-get install curl -y && \
 curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/debian-upgrade-11-to-12.sh | bash -
 ```
-##### Script para atualizar sistema Debian 11/12:
+##### Script para atualizar sistema (pacotes) Debian 11/12:
 ```bash
 export DEBIAN_FRONTEND=noninteractive
 cd /tmp/
