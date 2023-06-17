@@ -46,5 +46,6 @@ apt-get update && \
 	echo "OK - Done!";
 
 # Unhold grub to upgrade
-apt-mark unhold grub-pc
-apt-get install --reinstall grub-pc
+apt-mark unhold grub-pc && \
+	apt-get install --reinstall grub-pc && \
+ 	echo "OK GRUB - Done!";
