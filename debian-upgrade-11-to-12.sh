@@ -45,12 +45,12 @@ apt-get update && \
 	apt-get autoclean -y && \
 	sync && \
 	echo "OK - Done!"
- 
+
 # Unhold grub-pc to upgrade
-VERIFICAGRUB=$(dpkg --list | egrep '^[a-z]' | awk '{print $2}' | grep -c grub-pc);
-if [[ "${VERIFICAGRUB}" -ne "0" ]];
-then
-	apt-mark unhold grub-pc && \
-		apt-get install --reinstall grub-pc -y && \
- 		echo "OK GRUB - Done!";
-fi
+#VERIFICAGRUB=$(dpkg --list | egrep '^[a-z]' | awk '{print $2}' | grep -c grub-pc);
+#if [[ "${VERIFICAGRUB}" -ne "0" ]];
+#then
+#	apt-mark unhold grub-pc && \
+#		apt-get install --reinstall grub-pc -y && \
+# 		echo "OK GRUB - Done!";
+#fi
