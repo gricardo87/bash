@@ -44,8 +44,8 @@ apt-get update && \
 	apt-get autoremove -y && \
 	apt-get autoclean -y && \
 	sync && \
-	echo "OK - Done!";
-
+	echo "OK - Done!"
+ 
 # Unhold grub-pc to upgrade
 VERIFICAGRUB=$(dpkg --list | egrep '^[a-z]' | awk '{print $2}' | grep -c grub-pc);
 if [[ "${VERIFICAGRUB}" -ne "0" ]];
