@@ -31,7 +31,8 @@ apt-mark hold grub-pc
 # - apt-get autoclean -y: Removes old versions of installed package files
 # - sync: Flushes file system buffers
 # - echo "OK - Done!": Prints a success message indicating the completion of the script
-#travando gru para teste
+
+# Hold grub to no do any upgrade in firts upgrade.
 apt-mark hold grub-pc
 
 apt-get update && \
@@ -43,3 +44,7 @@ apt-get update && \
 	apt-get autoclean -y && \
 	sync && \
 	echo "OK - Done!";
+
+# Unhold grub to upgrade
+apt-mark unhold grub-pc
+apt-get install --reinstall grub-pc
