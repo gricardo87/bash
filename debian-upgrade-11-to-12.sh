@@ -32,7 +32,7 @@ apt-mark hold grub-pc
 # - sync: Flushes file system buffers
 # - echo "OK - Done!": Prints a success message indicating the completion of the script
 
-# Hold grub to no do any upgrade in firts upgrade.
+# Hold grub to don't upgrade in firt upgrade.
 apt-mark hold grub-pc
 
 apt-get update && \
@@ -47,5 +47,5 @@ apt-get update && \
 
 # Unhold grub to upgrade
 apt-mark unhold grub-pc && \
-	apt-get install --reinstall grub-pc && \
+	apt-get install --reinstall grub-pc -y && \
  	echo "OK GRUB - Done!";
