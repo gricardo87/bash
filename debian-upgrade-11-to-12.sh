@@ -23,8 +23,8 @@ sed -i s/"non-free"/"non-free-firmware"/g /etc/apt/sources.list
 # - sync: Flushes file system buffers
 # - echo "OK - Done!": Prints a success message indicating the completion of the script
 
-export NEEDRESTART_MODE='a';
 apt-get update && \
+	apt install zstd -y && \
 	apt-get upgrade -y && \
 	apt-get dist-upgrade -y && \
 	apt-get clean -y && \
