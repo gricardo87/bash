@@ -45,6 +45,15 @@ apt-get install curl -y && \
 curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/setup-minikube-debian.sh | bash -
 ```
 
+##### Comando para instalar o docker + kubectl + helm + kind em uma paulada só:
+```bash
+export DEBIAN_FRONTEND=noninteractive
+cd $(mktemp -d)
+apt-get update && \
+apt-get install curl -y && \
+curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/setup-kind-debian.sh | bash -
+```
+
 ##### Comando limpar ambiente docker:
 ```bash
 export DEBIAN_FRONTEND=noninteractive
