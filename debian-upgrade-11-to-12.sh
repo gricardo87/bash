@@ -21,9 +21,14 @@ if ! grep -q "non-free-firmware" /etc/apt/sources.list; then
 fi
 echo chegou 1
 # Hold grub-pc to don't upgrade in firt upgrade.
-if dpkg -s grub-pc >/dev/null 2>&1; then
+
+VERIFICAGRUB=$(dpkg --list | egrep '^[a-z]' | awk '{print $2}' | grep -c grub-pc);
+
+if [[ ${VERIFICAGRUB} -ne "0" ]];
+then
     apt-mark hold grub-pc
 else
+
 echo cheogu 2
 # Executes a series of APT commands:
 # - apt-get update: Updates the package lists
