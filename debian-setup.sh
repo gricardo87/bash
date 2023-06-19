@@ -29,7 +29,6 @@ apt-get update && \
     arping \
     hping3 \
     mtr-tiny \
-    awscli \
     ntpdate \
     bind9-dnsutils \
     aptitude \
