@@ -216,7 +216,12 @@ curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/install-ssm-de
 ```bash
 export DEBIAN_FRONTEND=noninteractive
 cd $(mktemp -d)
-apt-get update && \
-apt-get install curl -y && \
+if [ -f "/etc/centos-release" ]; then
+    yum update -y
+    yum install curl -y
+elif [ -f "/etc/debian_version" ]; then
+    apt update
+    apt install curl -y
+fi
 curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/enable-rclocal.sh | bash -
 ```
