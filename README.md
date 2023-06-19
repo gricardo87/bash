@@ -107,11 +107,11 @@ curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/install-ssm-de
 
 ##### Comando para ativar a execução do arquivo /etc/rc.local no boot do Linux:
 ```bash
-export DEBIAN_FRONTEND=noninteractive
 cd $(mktemp -d)
 if [ -f "/etc/centos-release" ]; then
     dnf install curl -y
 elif [ -f "/etc/debian_version" ]; then
+    export DEBIAN_FRONTEND=noninteractive
     apt-get update
     apt-get install curl -y
 fi
