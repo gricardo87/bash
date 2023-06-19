@@ -1,6 +1,13 @@
 #!/bin/bash
-# Create a systemd unit file for rc.local
-cat <<EOF > /etc/systemd/system/rc-local.service
+# Path to rc.local file
+rc_local_path="/etc/rc.local"
+
+# Path to systemd unit file
+unit_file_path="/etc/systemd/system/rc-local.service"
+
+# Create a systemd unit file for rc.local if it doesn't exist
+if [ ! -e "$unit_file_path" ]; then
+  cat <<EOF > "$unit_file_path"
 [Unit]
 Description=/etc/rc.local Compatibility
 ConditionPathExists=/etc/rc.local
@@ -16,17 +23,18 @@ SysVStartPriority=99
 [Install]
 WantedBy=multi-user.target
 EOF
+fi
 
 # Set permissions for rc.local file
-if [ -e "/etc/rc.local" ]; then
-  chmod +x /etc/rc.local
+if [ -e "$rc_local_path" ]; then
+  chmod +x "$rc_local_path"
 else
-  cat <<EOF > /etc/systemd/system/rc-local.service
+  cat <<EOF > "$rc_local_path"
 #!/bin/bash
 # Commands here!
 exit 0
 EOF
-chmod +x /etc/rc.local
+  chmod +x "$rc_local_path"
 fi
 
 # Enable and start rc.local service
