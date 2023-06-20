@@ -5,6 +5,7 @@ apt-get update && \
     apt-get install net-tools \
     libxt6 \
     git \
+    openssh-server \
     apt-file \
     libxmu6 \
     gdisk \
