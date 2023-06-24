@@ -4,5 +4,5 @@ docker rm $(docker ps -a -q) -f 2>&-
 docker rmi $(docker images -a -q) -f 2>&-
 docker volume rm $(docker volume ls -q) -f 2>&-
 docker network rm $(docker network ls -q) -f 2>&-
-docker system prune -f 2>&-
 docker volume prune -f 2>&-
+docker system prune -f 2>&-
