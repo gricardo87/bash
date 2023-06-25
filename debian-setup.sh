@@ -6,7 +6,6 @@ apt-get update && \
     libxt6 \
     git \
     zstd \
-    resolvconf \
     openssh-server \
     apt-file \
     libxmu6 \
