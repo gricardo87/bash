@@ -9,29 +9,24 @@ apt-get update && \
     openssh-server \
     apt-file \
     libxmu6 \
-    gdisk \
     nmap \
     bash-completion \
     htop \
     rsync \
     wget \
-    htop \
     build-essential \
     linux-headers-amd64 \
     vim \
     sudo \
-    linux-headers-amd64 \
-    build-essential \
     ca-certificates \
     curl \
     apt-transport-https \
     gnupg2 \
-    sudo \
     apt-file \
-    arping \
+#    arping \
     hping3 \
     mtr-tiny \
-    ntpdate \
+ #   ntpdate \
     bind9-dnsutils \
     aptitude \
     zip \
