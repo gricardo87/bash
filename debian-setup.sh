@@ -34,5 +34,6 @@ apt-get update && \
     --no-install-recommends -y;
 
 apt-file update;
+systemctl restart dbus
 
 echo "[*] Script executado com sucesso!";
