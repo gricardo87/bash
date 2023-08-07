@@ -35,5 +35,6 @@ apt-get update && \
 
 apt-file update;
 systemctl restart dbus
+systemctl daemon-reload
 
 echo "[*] Script executado com sucesso!";
