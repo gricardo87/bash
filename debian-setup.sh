@@ -23,10 +23,10 @@ apt-get update && \
     apt-transport-https \
     gnupg2 \
     apt-file \
-#    arping \
+    arping \
     hping3 \
     mtr-tiny \
- #   ntpdate \
+    ntpdate \
     bind9-dnsutils \
     aptitude \
     zip \
