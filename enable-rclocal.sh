@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/bash -exu
 # Path to rc.local file
-rc_local_path="/etc/rc.local"
+export rc_local_path="/etc/rc.local"
 
 # Path to systemd unit file
-unit_file_path="/etc/systemd/system/rc-local.service"
+export unit_file_path="/etc/systemd/system/rc-local.service"
 
 # Create a systemd unit file for rc.local if it doesn't exist
 if [ ! -e "$unit_file_path" ]; then
@@ -42,7 +42,6 @@ else
   echo '#' >> "$rc_local_path"
   echo '# By default this script does nothing.' >> "$rc_local_path"
   echo 'touch \'/tmp/rclocal-write-$(date +%d-%m-%Y_%H-%M-%S).txt\'' >> "$rc_local_path"
-  echo '' >> "$rc_local_path"
   echo 'exit 0' >> "$rc_local_path"
   chmod +x "$rc_local_path"
 fi
