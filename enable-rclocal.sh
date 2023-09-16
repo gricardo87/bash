@@ -25,27 +25,25 @@ WantedBy=multi-user.target
 EOF
 fi
 
-# Set permissions for rc.local file
+# Creat and/or set permissions for rc.local file
 if [ -e "$rc_local_path" ]; then
   chmod +x "$rc_local_path"
 else
-  cat <<EOF > "$rc_local_path"
-#!/bin/sh -e
-#
-# rc.local
-#
-# This script is executed at the end of each multiuser runlevel.
-# Make sure that the script will "exit 0" on success or any other
-# value on error.
-#
-# In order to enable or disable this script just change the execution
-# bits.
-#
-# By default this script does nothing.
-touch '/tmp/rclocal-write-\$\(date +\'%d-%m-%Y_%H-%M-%S\'\).txt'
-
-exit 0
-EOF
+  echo '#!/bin/sh -e' > "$rc_local_path"
+  echo '#' >> "$rc_local_path"
+  echo '# rc.local' >> "$rc_local_path"
+  echo '#' >> "$rc_local_path"
+  echo '# This script is executed at the end of each multiuser runlevel.' >> "$rc_local_path"
+  echo '# Make sure that the script will "exit 0" on success or any other' >> "$rc_local_path"
+  echo '# value on error.' >> "$rc_local_path"
+  echo '#' >> "$rc_local_path"
+  echo '# In order to enable or disable this script just change the execution' >> "$rc_local_path"
+  echo '# bits.' >> "$rc_local_path"
+  echo '#' >> "$rc_local_path"
+  echo '# By default this script does nothing.' >> "$rc_local_path"
+  echo 'touch \'/tmp/rclocal-write-$(date +%d-%m-%Y_%H-%M-%S).txt\'' >> "$rc_local_path"
+  echo '' >> "$rc_local_path"
+  echo 'exit 0' >> "$rc_local_path"
   chmod +x "$rc_local_path"
 fi
 
