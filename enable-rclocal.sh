@@ -42,7 +42,7 @@ else
 # bits.
 #
 # By default this script does nothing.
-touch "/tmp/rclocal-write-$(date +'%d-%m-%Y_%H-%M-%S').txt"
+touch '/tmp/rclocal-write-$(date +'%d-%m-%Y_%H-%M-%S').txt'
 
 exit 0
 EOF
