@@ -1,4 +1,5 @@
 #!/bin/bash -exu
+set -exu
 # Path to rc.local file
 export rc_local_path="/etc/rc.local"
 
