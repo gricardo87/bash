@@ -6,7 +6,7 @@ export rc_local_path="/etc/rc.local"
 export unit_file_path="/etc/systemd/system/rc-local.service"
 
 # Create a systemd unit file for rc.local if it doesn't exist
-if [[ ! -e $unit_file_path ]]; then
+if [ ! -e $unit_file_path ]; then
   cat <<EOF > $unit_file_path
   [Unit]
   Description=/etc/rc.local Compatibility
