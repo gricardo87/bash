@@ -1,5 +1,4 @@
-#!/bin/bash -exu
-set -exu
+#!/bin/bash
 # Path to rc.local file
 export rc_local_path="/etc/rc.local"
 
@@ -7,27 +6,27 @@ export rc_local_path="/etc/rc.local"
 export unit_file_path="/etc/systemd/system/rc-local.service"
 
 # Create a systemd unit file for rc.local if it doesn't exist
-if [ ! -e "$unit_file_path" ]; then
-  cat <<EOF > $unit_file_path
-  [Unit]
-  Description=/etc/rc.local Compatibility
-  ConditionPathExists=/etc/rc.local
-  
-  [Service]
-  Type=forking
-  ExecStart=/etc/rc.local
-  TimeoutSec=0
-  StandardOutput=tty
-  RemainAfterExit=yes
-  SysVStartPriority=99
-  
-  [Install]
-  WantedBy=multi-user.target
-  EOF
+if [ ! -e $unit_file_path ]; then
+cat <<EOF > "$unit_file_path"
+[Unit]
+Description=/etc/rc.local Compatibility
+ConditionPathExists=/etc/rc.local
+
+[Service]
+Type=forking
+ExecStart=/etc/rc.local
+TimeoutSec=0
+StandardOutput=tty
+RemainAfterExit=yes
+SysVStartPriority=99
+
+[Install]
+WantedBy=multi-user.target
+EOF
 fi
 
 # Creat and/or set permissions for rc.local file
-if [ -e "$rc_local_path" ]; then
+if [ -e $rc_local_path ]; then
   chmod +x "$rc_local_path"
 else
   echo '#!/bin/sh -e' > "$rc_local_path"
@@ -42,7 +41,7 @@ else
   echo '# bits.' >> "$rc_local_path"
   echo '#' >> "$rc_local_path"
   echo '# By default this script does nothing.' >> "$rc_local_path"
-  echo 'touch \'/tmp/rclocal-write-$(date +%d-%m-%Y_%H-%M-%S).txt\'' >> "$rc_local_path"
+  echo "touch \'/tmp/rclocal-write-$(date +%d-%m-%Y_%H-%M-%S).txt\'" >> "$rc_local_path"
   echo 'exit 0' >> "$rc_local_path"
   chmod +x "$rc_local_path"
 fi
