@@ -30,20 +30,9 @@ if [ -e $rc_local_path ]; then
   chmod +x "$rc_local_path"
 else
   echo '#!/bin/sh -e' > "$rc_local_path"
-  echo '#' >> "$rc_local_path"
-  echo '# rc.local' >> "$rc_local_path"
-  echo '#' >> "$rc_local_path"
-  echo '# This script is executed at the end of each multiuser runlevel.' >> "$rc_local_path"
-  echo '# Make sure that the script will "exit 0" on success or any other' >> "$rc_local_path"
-  echo '# value on error.' >> "$rc_local_path"
-  echo '#' >> "$rc_local_path"
-  echo '# In order to enable or disable this script just change the execution' >> "$rc_local_path"
-  echo '# bits.' >> "$rc_local_path"
-  echo '#' >> "$rc_local_path"
-  echo '# By default this script does nothing.' >> "$rc_local_path"
-  echo "touch \'/tmp/rclocal-write-$(date +%d-%m-%Y_%H-%M-%S).txt\'" >> "$rc_local_path"
+  echo 'touch /tmp/rclocal-lock.lock' >> "$rc_local_path"
   echo 'exit 0' >> "$rc_local_path"
-  chmod +x "$rc_local_path"
+  chmod +vx "$rc_local_path"
 fi
 
 # Enable and start rc.local service
