@@ -29,10 +29,12 @@ fi
 if [ -e $rc_local_path ]; then
   chmod +x "$rc_local_path"
 else
-  echo '#!/bin/sh -e' > "$rc_local_path"
-  echo 'touch /tmp/rclocal-lock.lock' >> "$rc_local_path"
-  echo 'exit 0' >> "$rc_local_path"
-  chmod +x "$rc_local_path"
+cat <<EOF > "$rc_local_path"
+#!/bin/sh -e
+touch /tmp/rclocal-lock.lock
+exit 0
+EOF
+chmod +x "$rc_local_path"
 fi
 
 # Enable and start rc.local service
