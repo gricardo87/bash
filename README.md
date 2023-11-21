@@ -124,3 +124,12 @@ elif [ -f "/etc/debian_version" ]; then
 fi
 curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/enable-rclocal.sh | bash -
 ```
+
+##### Script agrupado para colocar no user-data da EC2 para ela subir já atualizada e com ferramentas basicas:
+```bash
+export DEBIAN_FRONTEND=noninteractive
+cd $(mktemp -d)
+apt-get update && \
+apt-get install curl -y && \
+curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/user-data-ec2.sh | bash -
+```
