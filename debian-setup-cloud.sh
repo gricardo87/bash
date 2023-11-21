@@ -24,9 +24,8 @@ apt-get update && \
     bind9-dnsutils \
     aptitude \
     zip \
+    tzdata \
     unzip \
-	  awscli --no-install-recommends -y;
+    awscli --no-install-recommends -y;
 
 apt-file update;
-
-echo "[*] Script executado com sucesso!";
