@@ -22,7 +22,14 @@ apt-get update && \
 apt-get install curl -y && \
 curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/upgrade.sh | bash -
 ```
-
+##### Script para instalar principais ferramentas cli para servers AWS EC2:
+```bash
+export DEBIAN_FRONTEND=noninteractive
+cd $(mktemp -d)
+apt-get update && \
+apt-get install curl -y && \
+curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/debian-setup-cloud.sh | bash -
+```
 ##### Script para instalar principais ferramentas cli para servers (ou não):
 ```bash
 export DEBIAN_FRONTEND=noninteractive
