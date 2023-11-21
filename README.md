@@ -127,6 +127,7 @@ curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/enable-rclocal
 
 ##### Script agrupado para colocar no user-data da EC2 para ela subir já atualizada e com ferramentas basicas:
 ```bash
+#!/bin/bash
 export DEBIAN_FRONTEND=noninteractive
 cd $(mktemp -d)
 apt-get update && \
