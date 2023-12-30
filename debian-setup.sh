@@ -31,6 +31,7 @@ apt-get update && \
     aptitude \
     zip \
     unzip \
+    tmux \
     --no-install-recommends -y;
 
 apt-file update;
