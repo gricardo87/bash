@@ -26,6 +26,7 @@ apt-get update && \
     zip \
     tzdata \
     unzip \
+    tmux \
     awscli --no-install-recommends -y;
 
 apt-file update;
