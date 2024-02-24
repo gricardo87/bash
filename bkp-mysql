@@ -1,0 +1,43 @@
+#!/bin/bash -exu
+# Definindo a shell a ser usada como /bin/bash com parâmetros -exu
+# -e: Encerra o script imediatamente se algum comando retornar um código de erro.
+# -x: Imprime cada comando conforme é executado.
+# -u: Trata as variáveis não definidas como erros.
+
+# Cria um diretório temporário usando mktemp e o atribui à variável de ambiente PASTATMP.
+export PASTATMP=$(mktemp -d);
+
+# Define o diretório de destino para os backups e o atribui à variável PASTA.
+export PASTA="/bkp-sql/";
+
+runbkp() {
+     # Início da definição da função runbkp
+     # Define o caminho completo para o arquivo temporário bases_backup.txt.
+     # Atribui os argumentos passados para a função (endereço do host, usuário e senha) às variáveis HOST, USER e PASS.
+     BASES=${PASTATMP}/bases_backup.txt
+     HOST="$1"
+     USER="$2"
+     PASS="$3"
+    
+     # Executa um comando MySQL para listar os bancos de dados, excluindo 'information_schema', e redireciona a saída para bases_backup.txt.
+     echo "show databases;" | mysql -u ${USER} -h ${HOST} -p${PASS} | tail -n +2 | grep -xv "information_schema" > $BASES
+    
+     # Início do loop para processar cada banco de dados
+     while read DBATUAL;
+     do
+          # Início do loop para processar cada banco de dados
+          # Define o nome do arquivo de backup com o padrão MYSQL-NOME_DO_BANCO-<data_e_hora>.sql
+          ARQUIVO="MYSQL-${DBATUAL}--`date +%d_%m_%Y__%H_%M`.sql"
+
+          # Realiza o backup do banco de dados atual usando mysqldump e salva o arquivo no diretório de backup.
+          mysqldump --host=$HOST --user=$USER --password=$PASS --databases $DBATUAL > /${PASTA}/${HOST}_${ARQUIVO}
+
+          # Compacta o arquivo de backup em um arquivo .tgz e o remove após a compactação.
+          tar -czf /${PASTA}/${HOST}_${ARQUIVO}.tgz ${PASTA}/${HOST}_${ARQUIVO} && rm -vf /${PASTA}/${HOST}_${ARQUIVO}
+
+     # Fim do loop para processar cada banco de dados listado em bases_backup.txt.
+     done < $BASES
+}
+
+# Chama a função runbkp, passando o endereço do host MySQL, o usuário e a senha como argumentos.
+runbkp 127.0.0.1 root SENHA_AQUI
