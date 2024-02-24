@@ -20,7 +20,7 @@ runbkp() {
      PASS="$3"
     
      # Executa um comando MySQL para listar os bancos de dados, excluindo 'information_schema', e redireciona a saída para bases_backup.txt.
-     echo "show databases;" | mysql -u ${USER} -h ${HOST} -p${PASS} | tail -n +2 | grep -xv "information_schema" > $BASES
+     echo "show databases;" | mysql -u ${USER} -h ${HOST} -p${PASS} | tail -n +2 | egrep -xv "information_schema|performance_schema" > $BASES
     
      # Início do loop para processar cada banco de dados
      while read DBATUAL;
