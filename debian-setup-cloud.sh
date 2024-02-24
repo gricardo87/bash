@@ -27,6 +27,7 @@ apt-get update && \
     tzdata \
     unzip \
     tmux \
+    mysql-client \
     awscli --no-install-recommends -y;
 
 apt-file update;
