@@ -30,11 +30,12 @@ apt-get update && \
     mysql-client --no-install-recommends -y;
 
 export DEBIAN_FRONTEND=noninteractive
-cd $(mktemp -d)
+AWSCLITMP=$(mktemp -d);
+cd ${AWSCLITMP} && \
 apt-get update && \
 apt-get install unzip curl -y && \
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 ./aws/install
-
+cd .. && rm -rf ${AWSCLITMP}
 apt-file update;
