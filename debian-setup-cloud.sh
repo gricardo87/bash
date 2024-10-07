@@ -27,7 +27,14 @@ apt-get update && \
     tzdata \
     unzip \
     tmux \
-    mysql-client \
-    awscli --no-install-recommends -y;
+    mysql-client --no-install-recommends -y;
+
+export DEBIAN_FRONTEND=noninteractive
+cd $(mktemp -d)
+apt-get update && \
+apt-get install unzip curl -y && \
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+./aws/install
 
 apt-file update;
