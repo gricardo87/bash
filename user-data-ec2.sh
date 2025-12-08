@@ -19,7 +19,14 @@ apt-get update && \
 apt-get install curl -y && \
 curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/enable-rclocal.sh | bash -
 
+# install docker
 cd $(mktemp -d)
 apt-get update && \
 apt-get install curl -y && \
 curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/install-docker.sh | bash -
+
+# install docker-compose
+cd $(mktemp -d)
+apt-get update && \
+apt-get install curl -y && \
+curl -fsSL https://raw.githubusercontent.com/gricardo87/bash/main/install-docker-compose.sh | bash -
