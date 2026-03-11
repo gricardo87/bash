@@ -26,7 +26,7 @@ python3 -m venv "${VENV}"
 "${VENV}/bin/pip" install --upgrade pip ansible
 
 # Cria links simbólicos para os principais comandos do Ansible, isso permite executar ansible globalmente no sistema
-for CMD in ansible ansible-playbook ansible-galaxy
+for CMD in ansible ansible-playbook ansible-galaxy ansible-doc
 do
     ln -sf "${VENV}/bin/${CMD}" "/usr/local/bin/${CMD}"
 done
